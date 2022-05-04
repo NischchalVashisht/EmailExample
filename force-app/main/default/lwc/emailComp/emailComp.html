@@ -1,0 +1,49 @@
+<template>
+
+    <div style="height: 30px;">
+        <lightning-progress-indicator current-step={step} type="base" has-error={hasError} variant="base">
+            <lightning-progress-step label="Step 1" value="1"></lightning-progress-step>
+            <lightning-progress-step label="Step 2" value="2"></lightning-progress-step>
+        </lightning-progress-indicator>
+    </div>
+
+    <template if:true={boolvalue}>
+
+        <div style="height: 100px;">
+            <lightning-datatable key-field="Id" data={contacts} columns={columns} onrowselection={handleRowSelection}>
+            </lightning-datatable>
+
+            <lightning-button variant="brand" label="Email" title="Primary action" onclick={handleClick}
+                class="slds-float_right slds-p-around_medium"></lightning-button>
+
+        </div>
+
+    </template>
+
+    <template if:false={boolvalue}>
+
+        <div class="slds-p-around_xx-small">
+            <lightning-input type="text" label="Email To" read-only="true" value={emaildata}></lightning-input>
+        </div>
+
+        <div class="lgc-bg slds-p-around_xx-small">
+            <lightning-input type="text" label="Subject"  value={subject} onchange={changeHandler}>
+            </lightning-input>
+        </div>
+
+        <div class="lgc-bg slds-text-color_default slds-scrollable">
+            <lightning-input-rich-text value={body} label="EmailBody" placeholder="Email Body" onchange={changeHandler}>
+            </lightning-input-rich-text>
+        </div>
+
+        <lightning-button variant="brand" label="Previous" title="Primary action" onclick={handleClick}
+            class="slds-float_left slds-p-around_medium"></lightning-button>
+
+        <lightning-button variant="brand" label="Send" title="Primary action" onclick={handleClick}
+            class="slds-float_right slds-p-around_medium"></lightning-button>
+
+    </template>
+
+
+
+</template>
